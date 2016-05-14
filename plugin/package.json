@@ -1,0 +1,32 @@
+{
+  "name": "nativescript-applist",
+  "description": "NativeScript module to handle the list of installed apps on a device.",
+  "version": "1.0.0",
+  "nativescript": {
+    "platforms": {
+      "android": "1.1.0",
+      "ios": "1.0.0"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mkloubert/nativescript-applist"
+  },
+  "keywords": [
+    "NativeScript",
+    "Apps"
+  ],
+  "author": {
+    "name": "Marcel Joachim Kloubert",
+    "email": "marcel.kloubert@gmx.net"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/mkloubert/nativescript-applist/blob/master/LICENSE"
+  },
+  "bugs": {
+    "url": "https://github.com/mkloubert/nativescript-applist/issues"
+  },
+  "homepage": "https://github.com/mkloubert/nativescript-applist",
+  "readmeFilename": "README.md"
+}

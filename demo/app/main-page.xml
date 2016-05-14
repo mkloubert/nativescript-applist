@@ -1,0 +1,21 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <Page.actionBar>
+    <ActionBar title="nativescript-applist Demo">
+    </ActionBar>
+  </Page.actionBar>
+
+  <ListView items="{{ apps }}">
+    <ListView.itemTemplate>
+      <GridLayout columns="64, *">
+        <Image cssClass="mjk-app-icon" src="{{ icon }}" />
+      
+        <StackLayout col="1">
+          <Label text="{{ displayName }}"  />
+          <Label text="{{ name }}"  />
+          <Label text="{{ version.code }}"  />
+          <Label text="{{ version.name }}"  />
+        </StackLayout>
+      </GridLayout>
+    </ListView.itemTemplate>
+  </ListView>
+</Page>

@@ -5,6 +5,8 @@
 
 A [NativeScript](https://nativescript.org/) module to handle the list of installed apps on a device.
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SQPXGGJG3XDFY)
+
 ## License
 
 [MIT license](https://raw.githubusercontent.com/mkloubert/nativescript-applist/master/LICENSE)

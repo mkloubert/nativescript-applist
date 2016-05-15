@@ -1,7 +1,7 @@
 {
   "name": "nativescript-applist",
   "description": "NativeScript module to handle the list of installed apps on a device.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "nativescript": {
     "platforms": {
       "android": "1.1.0",

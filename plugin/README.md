@@ -57,6 +57,7 @@ Each item of `apps` has the following properties:
 | Name  | Description  |
 | ----- | ----------- |
 | displayName | The display name |
+| icon | If available: The icon as data url |
 | name | The internal (package) name |
 | version.code | The version code (Android only) |
 | version.name | The version name |

@@ -19,17 +19,24 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
-"use strict";
+
+
+import AppListCommons = require('./index');
+
+
 // getInstalledApps()
-function getInstalledApps(callback, cfg) {
+export function getInstalledApps(callback: (result: AppListCommons.IGetInstalledAppsResult) => void,
+                                 cfg?: AppListCommons.IGetInstalledAppsConfig) {
+    
     if (!cfg) {
         cfg = {};
     }
+    
     // TODO
-    var apps = [];
+    
+    var apps : AppListCommons.IInstalledApp[] = [];
+
     callback({
         apps: apps
     });
 }
-exports.getInstalledApps = getInstalledApps;
-//# sourceMappingURL=index.ios.js.map

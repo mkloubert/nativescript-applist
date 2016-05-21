@@ -19,34 +19,46 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
-"use strict";
-var app = require("application");
+
+
+import app = require("application");
 var androidApp = app.android;
 var androidAppCtx = androidApp.context;
+import AppListCommons = require('./index');
+
+
 // getInstalledApps()
-function getInstalledApps(callback, cfg) {
+export function getInstalledApps(callback: (result: AppListCommons.IGetInstalledAppsResult) => void,
+                                 cfg?: AppListCommons.IGetInstalledAppsConfig) {
+    
     if (!cfg) {
         cfg = {};
     }
+    
     var iconFormat = android.graphics.Bitmap.CompressFormat.PNG;
     var iconMime = 'image/png';
     var iconQuality = 100;
     if (cfg.icon) {
         switch (cfg.icon.format) {
             case 1:
-                iconFormat = android.graphics.Bitmap.CompressFormat.JPEG;
-                iconMime = 'image/png';
-                break;
+               iconFormat = android.graphics.Bitmap.CompressFormat.JPEG;
+               iconMime = 'image/png';
+               break;
         }
+        
         if (cfg.icon.quality) {
             iconQuality = cfg.icon.quality;
         }
     }
+
     var pm = androidAppCtx.getPackageManager();
-    var apps = [];
+    
+    var apps : AppListCommons.IInstalledApp[] = [];
+    
     var packages = pm.getInstalledPackages(0);
     for (var i = 0; i < packages.size(); i++) {
         var p = packages.get(i);
+        
         var a = {
             displayName: pm.getApplicationLabel(p.applicationInfo).toString(),
             name: p.packageName,
@@ -56,8 +68,10 @@ function getInstalledApps(callback, cfg) {
             },
             icon: undefined
         };
+        
         if (cfg.withIcons) {
             a.icon = null;
+            
             try {
                 var logo = pm.getApplicationLogo(p.applicationInfo);
                 if (logo != null) {
@@ -67,9 +81,12 @@ function getInstalledApps(callback, cfg) {
                             var stream = new java.io.ByteArrayOutputStream();
                             try {
                                 bitmap.compress(iconFormat, iconQuality, stream);
-                                a.icon = "data:" + iconMime + ";base64," + android.util.Base64.encodeToString(stream.toByteArray(), android.util.Base64.DEFAULT);
+                                
+                                a.icon = "data:" + iconMime + ";base64," + android.util.Base64.encodeToString(stream.toByteArray(),
+                                                                                                              android.util.Base64.DEFAULT);
                             }
                             catch (e) {
+                                // ignore
                             }
                             finally {
                                 stream.close();
@@ -77,6 +94,7 @@ function getInstalledApps(callback, cfg) {
                         }
                     }
                     catch (e) {
+                        // ignore
                     }
                     finally {
                         if (bitmap != null) {
@@ -86,13 +104,14 @@ function getInstalledApps(callback, cfg) {
                 }
             }
             catch (e) {
+                // ignore
             }
         }
+        
         apps.push(a);
     }
+    
     callback({
         apps: apps
     });
 }
-exports.getInstalledApps = getInstalledApps;
-//# sourceMappingURL=index.android.js.map

@@ -1,2 +1,10 @@
 /demo/platforms
 /demo/node_modules
+/plugin/android17.d.ts
+/plugin/ios.d.ts
+/dev/platforms
+/dev/node_modules
+/dev/android17.d.ts
+/dev/ios.d.ts
+/dev/app/AppList/*.map
+/dev/app/AppList/*.js

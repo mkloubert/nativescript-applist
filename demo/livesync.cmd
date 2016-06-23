@@ -1,7 +1,7 @@
 @ECHO OFF
 CLS
 
-CALL tns plugin remove nativescript-bitmap-factory
+CALL tns plugin remove nativescript-applist
 
 CD ..
 CD plugin

@@ -20,7 +20,14 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 "use strict";
-// getInstalledApps()
+/**
+ * Returns the list of installed apps.
+ *
+ * @function getInstalledApps
+ *
+ * @param {Function} callback The result callback.
+ * @param {IGetInstalledAppsConfig} [cfg] The custom configuration options.
+ */
 function getInstalledApps(callback, cfg) {
     if (!cfg) {
         cfg = {};

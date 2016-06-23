@@ -24,7 +24,14 @@
 import AppListCommons = require('./index');
 
 
-// getInstalledApps()
+/**
+ * Returns the list of installed apps.
+ * 
+ * @function getInstalledApps
+ * 
+ * @param {Function} callback The result callback.
+ * @param {IGetInstalledAppsConfig} [cfg] The custom configuration options.
+ */
 export function getInstalledApps(callback: (result: AppListCommons.IGetInstalledAppsResult) => void,
                                  cfg?: AppListCommons.IGetInstalledAppsConfig) {
     

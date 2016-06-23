@@ -27,7 +27,14 @@ var androidAppCtx = androidApp.context;
 import AppListCommons = require('./index');
 
 
-// getInstalledApps()
+/**
+ * Returns the list of installed apps.
+ * 
+ * @function getInstalledApps
+ * 
+ * @param {Function} callback The result callback.
+ * @param {IGetInstalledAppsConfig} [cfg] The custom configuration options.
+ */
 export function getInstalledApps(callback: (result: AppListCommons.IGetInstalledAppsResult) => void,
                                  cfg?: AppListCommons.IGetInstalledAppsConfig) {
     
@@ -42,7 +49,7 @@ export function getInstalledApps(callback: (result: AppListCommons.IGetInstalled
         switch (cfg.icon.format) {
             case 1:
                iconFormat = android.graphics.Bitmap.CompressFormat.JPEG;
-               iconMime = 'image/png';
+               iconMime = 'image/jpeg';
                break;
         }
         

@@ -23,7 +23,14 @@
 var app = require("application");
 var androidApp = app.android;
 var androidAppCtx = androidApp.context;
-// getInstalledApps()
+/**
+ * Returns the list of installed apps.
+ *
+ * @function getInstalledApps
+ *
+ * @param {Function} callback The result callback.
+ * @param {IGetInstalledAppsConfig} [cfg] The custom configuration options.
+ */
 function getInstalledApps(callback, cfg) {
     if (!cfg) {
         cfg = {};
@@ -35,7 +42,7 @@ function getInstalledApps(callback, cfg) {
         switch (cfg.icon.format) {
             case 1:
                 iconFormat = android.graphics.Bitmap.CompressFormat.JPEG;
-                iconMime = 'image/png';
+                iconMime = 'image/jpeg';
                 break;
         }
         if (cfg.icon.quality) {

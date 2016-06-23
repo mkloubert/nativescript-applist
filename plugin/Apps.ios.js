@@ -21,29 +21,11 @@
 // DEALINGS IN THE SOFTWARE.
 
 
-import AppListCommons = require('./index');
-
-
-/**
- * Returns the list of installed apps.
- * 
- * @function getInstalledApps
- * 
- * @param {Function} callback The result callback.
- * @param {IGetInstalledAppsConfig} [cfg] The custom configuration options.
- */
-export function getInstalledApps(callback: (result: AppListCommons.IGetInstalledAppsResult) => void,
-                                 cfg?: AppListCommons.IGetInstalledAppsConfig) {
-    
-    if (!cfg) {
-        cfg = {};
-    }
-    
-    // TODO
-    
-    var apps : AppListCommons.IInstalledApp[] = [];
+function getInstalledListOfApps(callback, cfg) {
+    var apps = [];
 
     callback({
         apps: apps
     });
 }
+exports.getInstalledListOfApps = getInstalledListOfApps;

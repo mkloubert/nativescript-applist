@@ -8,3 +8,4 @@
 /dev/ios.d.ts
 /dev/app/AppList/*.map
 /dev/app/AppList/*.js
+/plugin/*.map

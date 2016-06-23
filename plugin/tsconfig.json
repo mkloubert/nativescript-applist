@@ -7,11 +7,5 @@
         "emitDecoratorMetadata": true,
         "noEmitHelpers": true,
         "noEmitOnError": true
-    },
-    "exclude": [
-        "android17.d.ts",
-        "io.d.ts",
-        "references.d.ts",
-        "platforms"
-    ]
+    }
 }

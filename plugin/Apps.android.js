@@ -20,47 +20,24 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-
-import app = require("application");
+var app = require("application");
 var androidApp = app.android;
 var androidAppCtx = androidApp.context;
-import AppListCommons = require('./index');
 
-
-/**
- * Returns the list of installed apps.
- * 
- * @function getInstalledApps
- * 
- * @param {Function} callback The result callback.
- * @param {IGetInstalledAppsConfig} [cfg] The custom configuration options.
- */
-export function getInstalledApps(callback: (result: AppListCommons.IGetInstalledAppsResult) => void,
-                                 cfg?: AppListCommons.IGetInstalledAppsConfig) {
-    
-    if (!cfg) {
-        cfg = {};
-    }
-    
+function getInstalledListOfApps(callback, cfg) {
     var iconFormat = android.graphics.Bitmap.CompressFormat.PNG;
     var iconMime = 'image/png';
-    var iconQuality = 100;
-    if (cfg.icon) {
-        switch (cfg.icon.format) {
-            case 1:
-               iconFormat = android.graphics.Bitmap.CompressFormat.JPEG;
-               iconMime = 'image/jpeg';
-               break;
-        }
-        
-        if (cfg.icon.quality) {
-            iconQuality = cfg.icon.quality;
-        }
+    var iconQuality = cfg.icon.quality;
+    switch (cfg.icon.format) {
+        case 1:
+            iconFormat = android.graphics.Bitmap.CompressFormat.JPEG;
+            iconMime = 'image/jpeg';
+            break;
     }
 
     var pm = androidAppCtx.getPackageManager();
     
-    var apps : AppListCommons.IInstalledApp[] = [];
+    var apps = [];
     
     var packages = pm.getInstalledPackages(0);
     for (var i = 0; i < packages.size(); i++) {
@@ -90,7 +67,7 @@ export function getInstalledApps(callback: (result: AppListCommons.IGetInstalled
                                 bitmap.compress(iconFormat, iconQuality, stream);
                                 
                                 a.icon = "data:" + iconMime + ";base64," + android.util.Base64.encodeToString(stream.toByteArray(),
-                                                                                                              android.util.Base64.DEFAULT);
+                                                                                                              android.util.Base64.NO_WRAP);
                             }
                             catch (e) {
                                 // ignore
@@ -119,6 +96,8 @@ export function getInstalledApps(callback: (result: AppListCommons.IGetInstalled
     }
     
     callback({
-        apps: apps
+        apps: apps,
+        tag: cfg.tag
     });
 }
+exports.getInstalledListOfApps = getInstalledListOfApps;

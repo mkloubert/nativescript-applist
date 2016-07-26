@@ -10,3 +10,4 @@
 /dev/app/AppList/*.js
 /plugin/*.map
 /demo/.vscode
+/pushall.sh
